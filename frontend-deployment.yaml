@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: frontend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: frontend
@@ -14,9 +14,14 @@ spec:
     spec:
       containers:
       - name: frontned
-        image: nginx
+        image: yashmahi04/web-app-09
         ports:
         - containerPort: 80
+        resources:
+          limits:
+            cpu: 50m
+          requests:
+            cpu: 10m
 ---
 apiVersion: v1
 kind: Service
@@ -24,7 +29,7 @@ metadata:
   name: frontend-service
 spec:
   selector:
-    app: frontned
+    app: frontend
   ports:
     - protocol: TCP
       port: 80

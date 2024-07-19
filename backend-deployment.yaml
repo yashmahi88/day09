@@ -19,6 +19,11 @@ spec:
           - "-text=Hello from backend"
         ports:
         - containerPort: 5678
+        resources:
+          limits:
+            cpu: 50m
+          requests:
+            cpu: 10m
 ---
 apiVersion: v1
 kind: Service
